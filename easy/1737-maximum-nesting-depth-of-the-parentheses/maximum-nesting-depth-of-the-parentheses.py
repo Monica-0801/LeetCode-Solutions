@@ -1,11 +1,14 @@
 class Solution:
     def maxDepth(self, s: str) -> int:
-        m = 0
-        c = 0
-        for i in s:
-            if i == '(':
-               c += 1
-               m = max(c,m)
-            elif i == ')':
-                c -= 1
-        return m
+        depth = 0
+        max_depth = 0
+
+        for c in s:
+            if c == '(':
+                depth += 1
+                if depth > max_depth:
+                    max_depth = depth
+            elif c == ')':
+                depth -= 1
+
+        return max_depth               
